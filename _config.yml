@@ -1,0 +1,17 @@
+title: Digital Forest
+subtitle: joel@laboratory:~$ _
+domain: joellindberg.github.io
+url: https://joellindberg.github.io
+baseurl: /digital-forest
+
+paginate: 5
+
+plugins:
+  - jekyll-paginate
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+highlighter: disabled

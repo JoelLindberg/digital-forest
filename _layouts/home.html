@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="welcome-container">
+    <h1 class="welcome-title">Welcome to the Digital Forest</h1>
+    <h2 class="welcome-subtitle">{{ site.subtitle }}</h2>
+</div>
+
+{% for post in paginator.posts %}
+    <div class="py">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+        
+        <span class="date">Posted on {{ post.date | date: "%A, %-d %B %Y" }}</span>
+
+        <div class="post-container">
+            {% if post.thumbnail-img %}
+                <div class="post-thumbnail-container">
+                    <img src="{{ site.baseurl }}/{{ post.thumbnail-img }}" class="post-thumbnail" />
+                </div>
+            {% endif %}
+            
+            <div class="post-preview">
+                <p>{{ post.excerpt }}</p>
+            </div>
+        </div>
+
+        <a href="{{ site.baseurl }}{{ post.url }}" class="block">Read more ...</a>
+    </div>
+{% endfor %}
