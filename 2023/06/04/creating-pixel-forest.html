@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Creating Pixel Forest - Growing a website in the lab</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- highlighter -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+
+  <header class="container">
+    <div class="header-title-container">
+        <a class="header-title" href="/digital-forest/">Digital Forest</a>
+    </div>
+    <div class="logo-container">
+        <a href="#top">
+        <div class="logo-border">
+            <img src="/digital-forest/assets/img/logo-placeholder-02.png" class="logo-img"/>
+        </div>
+        </a>
+    </div>
+    <div class="menu-container">
+        <ul class="menu-items">
+            <li><a class="menu-item-link" href="/digital-forest/about">About</a></li>
+            <li><a class="menu-item-link" href="/digital-forest/">Blog</a></li>
+        </ul>
+    </div>
+</header>
+
+  <div class="header-bg">
+  </div>
+
+  <main class="container">
+    <div class="content px">
+      <div class="post-header">
+    <h1 class="post-title">Creating Pixel Forest</h1>
+    <h3 class="post-subtitle">Growing a website in the lab</h3>
+    <span class="date">Sunday, 4 June 2023</span>
+</div>
+
+<p>This site is primarily created using <a href="https://jekyllrb.com/">Jekyll</a> (a static site generator). Jekyll is a tool developed in <a href="https://www.ruby-lang.org/en/">Ruby</a>, but no Ruby programming is required as long as you are satisified with the wide range of features already included. It is a mature and reliable tool with plenty of people adopting it for their projects.</p>
+
+<p>I personally selected it due to it’s wide adoption and the mentioning of it at <a href="https://jamstack.org/">Jamstack</a> as one of the <a href="https://jamstack.org/generators/">top static site generators</a>.</p>
+
+<p><br /></p>
+
+<h2 id="responsive-layout">Responsive layout</h2>
+
+<p>Mobile first is something you generally hear nowadays when talking about responsive websites or webapps. Since this is a learning project, while also a tool to serve me, I made the decision early on to create the responsiveness using CSS and not a library that abstracts those parts away. I would most likely pick Bootstrap or Tailwind for any professional project to speed things up and get higher reliability (considering how incompatible some features are across different browsers).</p>
+
+<p>I used the built-in developer tools in Firefox and Chrome to identify good thresholds to adapt the site to smaller devices.</p>
+
+<p>Also referenced:</p>
+<ul>
+  <li>https://getbootstrap.com/docs/4.1/layout/overview/</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="date-and-time---strftime">Date and time - strftime</h2>
+
+<p>In Jekyll we can set a timestamp in the frontmatter (below). We want to be able to use this date for our paginator (on the Blog front page) when displaying our posts.</p>
+
+<pre><code>---
+title: date: 2023-06-04 10:00:00 +0200
+---
+</code></pre>
+
+<p>To accomplish this, we will fetch <code>page.date</code> to get the date from the frontmatter, and then we will call <code>date</code> which outputs the date in a format that seems to be similar (or identical?) to Ruby’s strftime.</p>
+
+<pre><code class="language-ruby">{{ page.date | date: "%-d %B %Y" }}
+</code></pre>
+
+<p>I did not dig any deeper into this, but it seems to work fine to reference Ruby’s official documentation for formatting: <a href="https://ruby-doc.org/3.2.2/strftime_formatting_rdoc.html">https://ruby-doc.org/3.2.2/strftime_formatting_rdoc.html</a></p>
+
+<p>It looks like it could be Liquid (the template engine that Jekyll is using) that implements Ruby’s strftime. I stumbled upon this Stackoverflow article which led me in the above direction: <a href="https://stackoverflow.com/questions/7395520/how-does-jekyll-date-formatting-work">https://stackoverflow.com/questions/7395520/how-does-jekyll-date-formatting-work</a></p>
+
+<p><br /></p>
+
+<h2 id="styling">Styling</h2>
+
+<h3 id="synax-highlighting">Synax highlighting</h3>
+
+<p>I decided to use <a href="https://highlightjs.org">highlight.js</a> instead of the built-in Rouge because of higher flexibility since I don’t know Ruby but do know Javascript.</p>
+
+<h3 id="escape-opening-curly-braces-in-liquid">Escape opening curly braces in Liquid</h3>
+
+<p>It’s not possible to escape the opening curly braces, but instead you can generate a pair of curly braces as a string: <code>{{ '{{' }}</code></p>
+
+<p>Source: https://joshtronic.com/2020/05/24/how-to-escape-curly-brackets-in-liquid-templates/</p>
+
+    </div>
+  </main>
+
+  <footer class="container">
+    <div class="footer-container px">
+      
+    <h3>2023 © Joel Lindberg</h3>
+    <ul class="footer-items">
+        <li class="footer-item"><a href="https://www.github.com/JoelLindberg"><img src="/digital-forest/assets/img/github-mark.svg" width="30px"/></a></li>
+        <li class="footer-item"><a href="https://www.linkedin.com/in/joeltnlindberg"><img src="/digital-forest/assets/img/linkedin-logo-full.png" width="100px"/></a></li>
+    </ul>
+
+    </div>
+  </footer>
+
+  <script>hljs.highlightAll();</script>
+
+</body>
+</html>

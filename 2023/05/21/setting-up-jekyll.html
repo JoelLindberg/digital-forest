@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Setting up Jekyll - A collection of commands to get going</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- highlighter -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+
+  <header class="container">
+    <div class="header-title-container">
+        <a class="header-title" href="/digital-forest/">Digital Forest</a>
+    </div>
+    <div class="logo-container">
+        <a href="#top">
+        <div class="logo-border">
+            <img src="/digital-forest/assets/img/logo-placeholder-02.png" class="logo-img"/>
+        </div>
+        </a>
+    </div>
+    <div class="menu-container">
+        <ul class="menu-items">
+            <li><a class="menu-item-link" href="/digital-forest/about">About</a></li>
+            <li><a class="menu-item-link" href="/digital-forest/">Blog</a></li>
+        </ul>
+    </div>
+</header>
+
+  <div class="header-bg">
+  </div>
+
+  <main class="container">
+    <div class="content px">
+      <div class="post-header">
+    <h1 class="post-title">Setting up Jekyll</h1>
+    <h3 class="post-subtitle">A collection of commands to get going</h3>
+    <span class="date">Sunday, 21 May 2023</span>
+</div>
+
+<p>A compact collection of commands and hints to get going with Jekyll (published on Github Pages), a static site generator built in Ruby. No Ruby programming experience required, you only need to manage the package manager parts.</p>
+
+<p>This guide assumes you are on Ubuntu.</p>
+
+<p><br /></p>
+
+<h2 id="ruby-and-jekyll">Ruby and Jekyll</h2>
+
+<p>Install Ruby:</p>
+<pre><code class="language-bash">sudo apt install ruby-full
+</code></pre>
+
+<p>Initialize a Ruby package (<a href="https://rubygems.org/">Gem</a>) - Generate a Gemfile:</p>
+<pre><code class="language-bash">bundle init
+</code></pre>
+
+<p>Open the <code>Gemfile</code> and insert:</p>
+<pre><code>gem "jekyll"
+</code></pre>
+
+<p>Now we need to prepare for installing the Jekyll gem.</p>
+
+<p>In this step we set dependencies to a local path because otherwise we are required to sudo install the packages which is not a good practice. Set local path for dependencies to be installed, and then run install:</p>
+<pre><code class="language-bash">bundle config set --local path 'vendor/bundle'
+bundle install
+</code></pre>
+
+<p>Start the development server:</p>
+<pre><code class="language-bash">bundle exec jekyll serve
+</code></pre>
+
+<p>You can now browse to <code>http://localhost:4000</code> to verify that everything is working.</p>
+
+<p>You can also start the development server with the browser forced to auto reload:</p>
+<pre><code class="language-bash">bundle exec jekyll serve --livereload
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h3 id="jekyll-initial-configuration">Jekyll initial configuration</h3>
+
+<p>Notes for minimal amount of configuration to get up and running on <a href="https://pages.github.com/">Github Pages</a>.</p>
+
+<p>This configuration is important if you, like me, plan on deploying to a Github Page as a <strong>project site</strong> but don’t want to publish it as the orginzation site for your account.</p>
+
+<p>You need to add at least the base path in the configuration file as well as making sure that your links are referencing this value. This way the paths will be correct both in the local development environment and when published.</p>
+
+<p>In this lab I created a repository named <code>jekyll-test</code>, which means the full project site url will be <code>https://joellindberg.github.io/jekyll-test</code>. When adding the below configuration it will inform your local development server to serve using the baseurl: <code>http://localhost/jekyll-test/</code></p>
+
+<p>Open <code>_config.yml</code> and add the following:</p>
+<pre><code>domain: joellindberg.github.io
+url: https://joellindberg.github.io
+baseurl: /jekyll-test
+</code></pre>
+
+<p>There are some files we can decide on already that we want to exclude to avoid them from being published:</p>
+
+<p>Open <code>_config.yml</code> and add the following:</p>
+<pre><code>exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+</code></pre>
+
+<p>Start the local development server to verify that everything is working so far. Since we added a baseurl this must be appended.</p>
+<pre><code class="language-bash">bundle exec jekyll serve
+</code></pre>
+
+<p>Verify by opening this url in the browser: <code>http://localhost:4000/jekyll-test/</code></p>
+
+<p><br />
+<br /></p>
+
+<h2 id="deploy-to-github-pages">Deploy to Github Pages</h2>
+
+<ol>
+  <li>
+    <p>Create a gitignore file if not already done as we don’t want to push things to our repo such as locally installed dependencies.</p>
+
+    <p>Open <code>.gitignore</code> and add:</p>
+    <pre><code> .bundle/
+ .jekyll-cache
+ .jekyll-metadata
+ _site
+ vendor/
+</code></pre>
+  </li>
+  <li>
+    <p>Create a token in your repository: Settings -&gt; <a href="https://github.com/settings/tokens">Tokens</a></p>
+
+    <p>I used the new (beta) function Fine-grained tokens -&gt; Select <code>Only select repositories</code> and then select <code>jekyll-test</code>.</p>
+
+    <p>Add the Repository permissions: <br />
+ Actions: <code>Read and Write</code> <br />
+ Contents: <code>Read and Write</code></p>
+  </li>
+  <li>
+    <p>Setup Github Actions Workflow to publish all files in the <code>_site</code> directory (created when running jekyll build).</p>
+
+    <p>Create: <code>.github</code>/<code>workflows</code>/<code>build-website.yml</code></p>
+    <pre><code> name: Build and publish
+
+ on:
+   workflow_dispatch:
+   push:
+     branches: [ main ]
+
+ # Make sure jobs cannot overlap (e.g. one from push and one from schedule).
+ concurrency:
+   group: published-ci
+   cancel-in-progress: true
+
+ jobs:
+   build:
+     name: Build and deploy to the published branch
+     runs-on: ubuntu-latest
+
+     steps:
+     - uses: actions/checkout@v3
+       with:
+         ref: 'main'
+
+     # Configure the build environment.
+
+     - name: Install Ruby 3.1
+       uses: ruby/setup-ruby@v1
+       with:
+         ruby-version: '3.1'
+         # Runs 'bundle install' and caches installed gems automatically
+         bundler-cache: true
+
+     # Build the website.
+
+     - name: Build the static website
+       run: bundle exec jekyll build
+
+     # Publish the build results
+
+     - name: Deploy to the published branch 🚀
+       uses: JamesIves/github-pages-deploy-action@v4
+       with:
+         branch: published
+         folder: _site
+         # Configure the commit author.
+         git-config-name: 'Joel Lindberg'
+         git-config-email: '&lt;&gt;'
+         token: ${{ secrets.JEKYLL_BUILD }}
+         # Remove outdated files from the target directory.
+         clean: true
+</code></pre>
+  </li>
+</ol>
+
+<p><br />
+<br /></p>
+
+    </div>
+  </main>
+
+  <footer class="container">
+    <div class="footer-container px">
+      
+    <h3>2023 © Joel Lindberg</h3>
+    <ul class="footer-items">
+        <li class="footer-item"><a href="https://www.github.com/JoelLindberg"><img src="/digital-forest/assets/img/github-mark.svg" width="30px"/></a></li>
+        <li class="footer-item"><a href="https://www.linkedin.com/in/joeltnlindberg"><img src="/digital-forest/assets/img/linkedin-logo-full.png" width="100px"/></a></li>
+    </ul>
+
+    </div>
+  </footer>
+
+  <script>hljs.highlightAll();</script>
+
+</body>
+</html>
