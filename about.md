@@ -19,10 +19,11 @@ I feel really good about building things, whether it be new things or improving 
 
 My general areas of expertise and focus (not in a particular order).
 
-* REST APIs
-* Misc. programming and scripting
 * Network and systems
-* Jamstack
+* Misc. programming and scripting
+* REST APIs 
+* Web development (full-stack)
+  - Jamstack
   - My current personal learning focus
 
 More fine-grained:
@@ -34,7 +35,7 @@ More fine-grained:
 * Javascript
   - Front-end/browser scripting
   - Node.js
-* Web development
+* Web development (full-stack)
   - HTML, CSS
   - Javascript and components
   - REST APIs

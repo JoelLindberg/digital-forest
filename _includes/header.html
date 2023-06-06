@@ -1,18 +1,35 @@
-<header class="container">
+<header class="container" id="header">
     <div class="header-title-container">
         <a class="header-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
     </div>
+    
     <div class="logo-container">
-        <a href="#top">
         <div class="logo-border">
+            <a href="#top">
             <img src="{{ site.baseurl }}/assets/img/logo-placeholder-02.png" class="logo-img"/>
+            </a>
         </div>
-        </a>
     </div>
+
     <div class="menu-container">
+        <div id="nav-button-toggle">
+            <a href="javascript:void(0);" onclick="myFunction()">
+                <span class="material-symbols-outlined">menu</span>
+            </a>
+        </div>
+
         <ul class="menu-items">
-            <li><a class="menu-item-link" href="{{ site.baseurl }}/about">About</a></li>
-            <li><a class="menu-item-link" href="{{ site.baseurl }}/">Blog</a></li>
+            <li class=""><a class="menu-item-link" href="{{ site.baseurl }}/about">About</a></li>
+            <li class=""><a class="menu-item-link" href="{{ site.baseurl }}/">Blog</a></li>
+        </ul>
+    </div>
+    
+    
+    <div id="nav-button-links">
+        <ul>
+            <li><a class="nav-button-item-link" href="{{ site.baseurl }}/about">About</a></li>
+            <li><a class="nav-button-item-link" href="{{ site.baseurl }}/">Blog</a></li>
         </ul>
     </div>
 </header>
+

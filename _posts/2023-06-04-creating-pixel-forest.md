@@ -11,16 +11,25 @@ This site is primarily created using [Jekyll](https://jekyllrb.com/) (a static s
 
 I personally selected it due to it's wide adoption and the mentioning of it at [Jamstack](https://jamstack.org/) as one of the [top static site generators](https://jamstack.org/generators/).
 
+The following article is written primarily for myself, but I'd be happy if anyone else also also found some of this information useful.
+
 <br />
 
 ## Responsive layout
 
-Mobile first is something you generally hear nowadays when talking about responsive websites or webapps. Since this is a learning project, while also a tool to serve me, I made the decision early on to create the responsiveness using CSS and not a library that abstracts those parts away. I would most likely pick Bootstrap or Tailwind for any professional project to speed things up and get higher reliability (considering how incompatible some features are across different browsers).
+Mobile first is something you generally hear nowadays when talking about responsive websites or webapps. I decided to go for this approach as well as it's a a large amount of people browse the web using their mobile, plus it makes more sense from an optimization point of view.
 
-I used the built-in developer tools in Firefox and Chrome to identify good thresholds to adapt the site to smaller devices.
+Since this is a learning project, but also a tool to serve me, I made the decision early on to create the responsiveness using standard CSS and not a library that abstracts those parts away. I find Tailwind to be an interesting choice for any professional project to speed things up and get higher reliability (considering how incompatible some features are across different browsers).
 
-Also referenced:
-* https://getbootstrap.com/docs/4.1/layout/overview/
+I used the built-in developer tools in Firefox and Chrome to identify good thresholds to adapt the site to smaller devices. Since I focused on mobile first, everything on the top in the CSS are styles that apply to any device size as well as specifically for mobile devices. In the bottom I have decided to put the `@media` CSS at-rules that scales the page for larger devices.
+
+Regarding the `@media` CSS at-rules, I struggled a long time with getting things right with this, which is strange because it looks really simple. The solution turned out to be that you need to specify a few things in the `<head>` element:
+
+~~~html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+~~~
+
+Regarding grid and flexbox, I decided to go for grid and then nest any flexbox as required inside of my grids.
 
 <br />
 
@@ -57,3 +66,7 @@ I decided to use [highlight.js](https://highlightjs.org) instead of the built-in
 It's not possible to escape the opening curly braces, but instead you can generate a pair of curly braces as a string: `{{ '{{' }} '{{'{{'}}' }}`
 
 Source: https://joshtronic.com/2020/05/24/how-to-escape-curly-brackets-in-liquid-templates/
+
+## Navigation
+
+I referenced this w3schools tutorial for creating the mobile navbar: https://www.w3schools.com/howto/howto_js_mobile_navbar.asp
