@@ -1,7 +1,7 @@
 :root {
-    --pixel-margin-y: 30px;
-    --pixel-margin-x: 90px;
-    --pixel-width: 1000px;
+    --pixel-margin-y: 5px;
+    --pixel-margin-x: 0px;
+    --pixel-width: 350px;
 
     --primary: #46beae;
     --secondary: #a86436;
@@ -11,18 +11,22 @@
     --content-background: #fff;
     --footer-background: #fff;
     --footer-text: #333;
+
+    --text-font: Helvetica, sans-serif;
     --text-dark: #333;
     --text-mid: #bbb;
     --text-light: #eee;
+
     --link-light: #eee;
+    --link-hover: #fff;
+
     --title-font: 'Ubuntu', sans-serif;
     --subtitle-font: 'Ubuntu', sans-serif;
-    --text-font: Helvetica, sans-serif;
-
-    --header-font-title-large: 20px;
-    --header-font-title-small: 15px;
-    --header-font-large: 20px;
-    --header-font-small: 15px;
+    
+    --header-font-title-large: 16px;
+    --header-font-title-small: 12px;
+    --header-font-large: 12px;
+    --header-font-small: 8px;
 }
 
 
@@ -55,13 +59,12 @@ header {
     background-color: rgba(132, 142, 151, 0.5);
     backdrop-filter: blur(4px);
     position: fixed;
-    height: 40px;
+    height: auto; /* 40px */
     padding: 0;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    font-size: 8px;
     align-items: center;
-
+    font-size: 0px;
 }
 
 .header-title-container {
@@ -88,7 +91,7 @@ header a:hover {
 
 .logo-container {
     position: absolute;
-    bottom: -35px;
+    top: -55px;
     left: 50%;
 }
 
@@ -97,9 +100,14 @@ header a:hover {
 }
 
 .logo-img {
-    width: 130px;
+    width: 100px; /* 130px */
     border-radius: 50%;
     border: 3px solid;
+}
+
+.logo-border a:hover {
+    color: var(--link-hover);
+    background-color: initial;
 }
 
 
@@ -109,8 +117,8 @@ header a:hover {
 }
 
 .menu-items {
+    display: none; /* flex */
     margin-left: auto;
-    display: flex;
     flex-direction: row;
     list-style: none;
     padding-right: var(--pixel-margin-x);
@@ -121,6 +129,30 @@ header a:hover {
     padding: 8px 20px;
     font-size: var(--header-font-large);
     transition: inherit;
+}
+
+#nav-button-toggle {
+    display: flex;
+    margin-left: auto;
+    flex-direction: row;
+    list-style: none;
+    padding-right: var(--pixel-margin-x);
+    transition: inherit;
+    padding: 8px 20px;
+}
+
+#nav-button-links {
+    display: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#nav-button-links li {
+    margin-top: 7px;
+}
+
+.nav-button-item-link {
+    padding: 7px 10px;
 }
 
 /* Test header bg */
@@ -201,7 +233,7 @@ h4 {
 
 p {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -307,30 +339,103 @@ code {
 }
 
 
-/* -------- Reactivity -------- */
+/* Material Icons */
+/* https://fonts.google.com/icons */
 
-@media screen and (max-width: 1440px) {
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 48;
+    color: var(--header-text);
+}
+
+
+/* -------- Responsive breakpoints -------- */
+
+@media screen and (min-width: 1440px) {
+    :root {
+        --pixel-margin-y: 30px;
+        --pixel-margin-x: 90px;
+        --pixel-width: 1000px;
+
+        --header-font-title-large: 20px;
+        --header-font-title-small: 15px;
+        --header-font-large: 20px;
+        --header-font-small: 15px;
+    }
+
+    header {
+        font-size: 8px;
+    }
+
+    .logo-container {
+        position: absolute;
+        top: -70px;
+        left: 50%;
+    }
+
+    .logo-img {
+        width: 130px;
+        border-radius: 50%;
+        border: 3px solid;
+    }
+
+    .menu-items {
+        display: flex;
+    }
+
+    #nav-button-toggle {
+        display: none;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
     :root {
         --pixel-margin-y: 15px;
         --pixel-margin-x: 30px;
-        --pixel-width: 800px;
+        --pixel-width: 700px;
+
+        --header-font-title-large: 20px;
+        --header-font-title-small: 15px;
+        --header-font-large: 20px;
+        --header-font-small: 15px;
+    }
+
+    header {
+        font-size: 8px;
+    }
+
+    .logo-container {
+        position: absolute;
+        top: -70px;
+        left: 50%;
+    }
+
+    .logo-img {
+        width: 130px;
+        border-radius: 50%;
+        border: 3px solid;
+    }
+
+    .menu-items {
+        display: flex;
+    }
+
+    #nav-button-toggle {
+        display: none;
+    }
+
+    p {
+        font-size: 18px;
     }
 }
 
-@media screen and (max-width: 750px) {
-    :root {
-        --pixel-margin-y: 5px;
-        --pixel-margin-x: 0;
-        --pixel-width: 360px;
-    }
-
-    h1 {
-        font-size: 35px;
-    }
-
-    h2 {
-        font-size: 25px;
-    }
-}
-
-
+/* Add a media css rule for very small devices (Chrome dev tools -> Galaxy Fold) */
