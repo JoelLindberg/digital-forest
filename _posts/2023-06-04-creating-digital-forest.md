@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Creating Pixel Forest
+title: Creating Digital Forest
 subtitle: Growing a website in the lab
 date: 2023-06-04 10:00:00 +0200
-thumbnail-img: /assets/img/2023-05-27/creating-pixel-forest-thumb.png
+thumbnail-img: /assets/img/2023-06-04/creating-digital-forest-thumb.png
 tags: [jekyll, html, javascript, css, markdown, design]
 ---
 
@@ -70,3 +70,14 @@ Source: https://joshtronic.com/2020/05/24/how-to-escape-curly-brackets-in-liquid
 ## Navigation
 
 I referenced this w3schools tutorial for creating the mobile navbar: https://www.w3schools.com/howto/howto_js_mobile_navbar.asp
+
+## CSS and Javascript caching
+
+I ran into issues with CSS being cached during development and after my second deployment to Github Pages. After some google it turns out there is a neat trick to avoid this, especially when publishing and you want to make sure that anyone that visists your page will get the latest CSS and Javascript files.
+
+Append `?<number>` to your CSS and Javascript links. This seems to not have any impact other than tricking your browser to think it's a new resource being loaded since the URL is changed when you increment the number (you could just write anything as long as it is changed since last time as far as I know).
+
+~~~html
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles.css?1">
+<script src="{{ site.baseurl }}/assets/js/nav-button-toggle.js?1"></script>
+~~~
