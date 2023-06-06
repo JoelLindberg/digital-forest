@@ -9,8 +9,10 @@
     --background: #fff;
     --header-text: #eee;
     --content-background: #fff;
+
     --footer-background: #fff;
-    --footer-text: #333;
+    --footer-color: #333;
+    --footer-font-size: 20px;
 
     --text-font: Helvetica, sans-serif;
     --text-dark: #333;
@@ -177,12 +179,16 @@ header a:hover {
 /* -------- FOOTER -------- */
 footer {
     background-color: var(--footer-background);
-    color: var(--footer-text);
+    color: var(--footer-color);
+}
+
+footer h3 {
+    font-size: var(--footer-font-size);
 }
 
 .footer-container {
     grid-template-columns: 1fr;
-    margin: auto;
+    margin: 0px auto 40px auto;
     width: var(--pixel-width);
     display: flex;
     align-items: center;
@@ -196,7 +202,7 @@ footer {
 }
 
 .footer-item {
-    padding: 0 10px;
+    padding: 0px 10px;
 }
 
 .footer a:hover {
@@ -239,11 +245,11 @@ p {
 
 a {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 code {
-    font-size: 16px;
+    font-size: 13px;
 }
 
 hr {
@@ -360,6 +366,8 @@ code {
         --pixel-margin-x: 90px;
         --pixel-width: 1000px;
 
+        --footer-font-size: 22px;
+
         --header-font-title-large: 20px;
         --header-font-title-small: 15px;
         --header-font-large: 20px;
@@ -390,8 +398,16 @@ code {
         display: none;
     }
 
+    a {
+        font-size: 18px;
+    }
+
     p {
         font-size: 18px;
+    }
+
+    code {
+        font-size: 15px;
     }
 
 }
@@ -403,6 +419,8 @@ code {
         --pixel-margin-x: 30px;
         --pixel-width: 700px;
 
+        --footer-font-size: 22px;
+
         --header-font-title-large: 20px;
         --header-font-title-small: 15px;
         --header-font-large: 20px;
@@ -433,9 +451,18 @@ code {
         display: none;
     }
 
+    a {
+        font-size: 18px;
+    }
+
     p {
         font-size: 18px;
     }
+
+    code {
+        font-size: 15px;
+    }
+
 }
 
 /* Add a media css rule for very small devices (Chrome dev tools -> Galaxy Fold) */

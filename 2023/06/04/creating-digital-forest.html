@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Creating Pixel Forest - Growing a website in the lab</title>
+    <title>Creating Digital Forest - Growing a website in the lab</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css?1">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
     <!-- navigation -->
-    <script src="/digital-forest/assets/js/nav-button-toggle.js"></script>
+    <script src="/digital-forest/assets/js/nav-button-toggle.js?1"></script>
 </head>
 <body>
 
@@ -66,7 +66,7 @@
   <main class="container">
     <div class="content px">
       <div class="post-header">
-    <h1 class="post-title">Creating Pixel Forest</h1>
+    <h1 class="post-title">Creating Digital Forest</h1>
     <h3 class="post-subtitle">Growing a website in the lab</h3>
     <span class="date">Sunday, 4 June 2023</span>
 </div>
@@ -132,6 +132,16 @@ title: date: 2023-06-04 10:00:00 +0200
 
 <p>I referenced this w3schools tutorial for creating the mobile navbar: https://www.w3schools.com/howto/howto_js_mobile_navbar.asp</p>
 
+<h2 id="css-and-javascript-caching">CSS and Javascript caching</h2>
+
+<p>I ran into issues with CSS being cached during development and after my second deployment to Github Pages. After some google it turns out there is a neat trick to avoid this, especially when publishing and you want to make sure that anyone that visists your page will get the latest CSS and Javascript files.</p>
+
+<p>Append <code>?&lt;number&gt;</code> to your CSS and Javascript links. This seems to not have any impact other than tricking your browser to think it’s a new resource being loaded since the URL is changed when you increment the number (you could just write anything as long as it is changed since last time as far as I know).</p>
+
+<pre><code class="language-html">&lt;link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css?1"&gt;
+&lt;script src="/digital-forest/assets/js/nav-button-toggle.js?1"&gt;&lt;/script&gt;
+</code></pre>
+
     </div>
   </main>
 
@@ -141,7 +151,7 @@ title: date: 2023-06-04 10:00:00 +0200
     <h3>2023 © Joel Lindberg</h3>
     <ul class="footer-items">
         <li class="footer-item"><a href="https://www.github.com/JoelLindberg"><img src="/digital-forest/assets/img/github-mark.svg" width="30px"/></a></li>
-        <li class="footer-item"><a href="https://www.linkedin.com/in/joeltnlindberg"><img src="/digital-forest/assets/img/linkedin-logo-full.png" width="100px"/></a></li>
+        <li class="footer-item"><a href="https://www.linkedin.com/in/joeltnlindberg"><img src="/digital-forest/assets/img/linkedin-logo-icon.png" width="35px"/></a></li>
     </ul>
 
     </div>
