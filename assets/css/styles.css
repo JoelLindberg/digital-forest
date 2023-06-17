@@ -10,8 +10,8 @@
     --header-text: #eee;
     --content-background: #fff;
 
-    --footer-background: #fff;
-    --footer-color: #333;
+    --footer-background: #b4b4b4;
+    --footer-color: #eee;
     --footer-font-size: 20px;
 
     --text-font: Helvetica, sans-serif;
@@ -33,7 +33,7 @@
 
 
 html, body {
-    background-color: var(--background);
+    background-color: var(--footer-background);
     margin:0;
     font-family: var(--text-font);
     font-weight: bold;
@@ -213,6 +213,10 @@ header a:hover {
 
 
 /* -------- MAIN -------- */
+main {
+    background-color: var(--content-background);
+}
+
 .content {
     background-color: var(--content-background);
     grid-template-columns: 1fr;
@@ -235,7 +239,7 @@ footer h3 {
 
 .footer-container {
     grid-template-columns: 1fr;
-    margin: 0px auto 40px auto;
+    margin: 20px auto 40px auto;
     width: var(--pixel-width);
     display: flex;
     align-items: center;
@@ -252,8 +256,19 @@ footer h3 {
     padding: 0px 10px;
 }
 
+/*
 .footer a:hover {
     background-color: rgba(224, 224, 224, 1);
+}
+*/
+
+.footer-icon {
+    fill: var(--footer-color);
+    width: 35px;
+}
+
+.footer-icon:hover {
+    fill: #777;
 }
 
 
@@ -303,7 +318,7 @@ code {
 }
 
 hr {
-    border: 1px solid #e7e7e7;
+    border: 1px solid #1f291e;
 }
 
 .link-light {
