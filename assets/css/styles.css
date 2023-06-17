@@ -157,12 +157,55 @@ header a:hover {
     padding: 7px 10px;
 }
 
-/* Test header bg */
+/* Header background */
 .header-bg {
-    background: url("/digital-forest/assets/img/header-bg-draft.png") no-repeat center;
-    height: 100px;
+    background: url("/digital-forest/assets/img/header-bg-draft-2.png") no-repeat center;
+    height: 300px;
     background-size: cover;
 }
+
+
+.welcome-container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: var(--pixel-width);
+    margin: auto;
+    color: var(--header-text);
+    font-size: 30px;
+}
+.welcome-title {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.welcome-subtitle {
+    margin-top: 0;
+    font-weight: 300;
+}
+
+/* Header cursor animation */
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+}
+
+#cursor-container {
+    display: flex;
+}
+
+#cursor::after {
+    content: "";
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    margin-left: 12px;
+    width: 16px;
+    height: 26px;
+    background: var(--header-text);
+    display: inline-block;
+    animation: cursor-blink 1.5s steps(2) infinite;
+}
+
 
 
 /* -------- MAIN -------- */
@@ -250,6 +293,9 @@ a {
 
 code {
     font-size: 13px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px;
 }
 
 hr {
@@ -262,20 +308,6 @@ hr {
 
 .ita {
     font-style: italic;
-}
-
-
-.welcome-container {
-    font-size: 28px;
-
-}
-.welcome-title {
-    margin-bottom: 0;
-    font-weight: 400;
-}
-.welcome-subtitle {
-    margin-top: 0;
-    font-weight: 300;
 }
 
 
