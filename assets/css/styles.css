@@ -172,10 +172,11 @@ header a:hover {
     margin: auto;
     color: var(--header-text);
     font-size: 30px;
+    text-shadow: 0px 0px 30px rgb(48, 59, 51);
 }
 .welcome-title {
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 700;
 }
 .welcome-subtitle {
     margin-top: 0;
@@ -184,8 +185,11 @@ header a:hover {
 
 /* Header cursor animation */
 @keyframes cursor-blink {
-    0% {
-        opacity: 0;
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgb(255, 255, 255, 1);
     }
 }
 
@@ -193,7 +197,7 @@ header a:hover {
     display: flex;
 }
 
-#cursor::after {
+#cursor {
     content: "";
     margin-top: 2px;
     margin-bottom: 0px;
