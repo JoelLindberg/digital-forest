@@ -1,35 +1,28 @@
-<header class="container" id="header">
-    <div class="header-title-container">
-        <a class="header-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-    </div>
-    
-    <div class="logo-container">
-        <div class="logo-border">
-            <a href="#top">
-            <img src="{{ site.baseurl }}/assets/img/logo-placeholder-02.png" class="logo-img"/>
-            </a>
+<div class="header-container">
+    <div class="header-flex-items">
+        <div class="header-title-container">
+            <a href=""><img class="logo-img" src="{{ site.baseurl }}/assets/img/digital-forest-logo-01.png"/></a>
+            <a class="header-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        </div>
+
+        <div class="menu-container">
+            <div id="nav-button-toggle">
+                <a href="javascript:void(0);" onclick="myFunction()">
+                    <span class="material-symbols-outlined">menu</span>
+                </a>
+            </div>
+
+            <div class="menu-items">
+                <a class="menu-item-link" href="{{ site.baseurl }}/about">About</a>
+                <a class="menu-item-link" href="{{ site.baseurl }}/">Blog</a>
+            </div>
         </div>
     </div>
 
-    <div class="menu-container">
-        <div id="nav-button-toggle">
-            <a href="javascript:void(0);" onclick="myFunction()">
-                <span class="material-symbols-outlined">menu</span>
-            </a>
-        </div>
-
-        <ul class="menu-items">
-            <li class=""><a class="menu-item-link" href="{{ site.baseurl }}/about">About</a></li>
-            <li class=""><a class="menu-item-link" href="{{ site.baseurl }}/">Blog</a></li>
-        </ul>
-    </div>
-    
-    
     <div id="nav-button-links">
         <ul>
             <li><a class="nav-button-item-link" href="{{ site.baseurl }}/about">About</a></li>
             <li><a class="nav-button-item-link" href="{{ site.baseurl }}/">Blog</a></li>
         </ul>
     </div>
-</header>
-
+</div>
