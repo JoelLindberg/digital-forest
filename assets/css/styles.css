@@ -12,11 +12,11 @@
 
     --footer-background: #b4b4b4;
     --footer-color: #eee;
-    --footer-font-size: 20px;
+    --footer-font-size: 18px;
 
     --text-font: Helvetica, sans-serif;
     --text-dark: #333;
-    --text-mid: #bbb;
+    --text-mid: #888;
     --text-light: #eee;
 
     --link-light: #eee;
@@ -155,9 +155,9 @@ header a:hover {
 
 /* Header background */
 .header-bg {
-    background: url("/digital-forest/assets/img/header-bg-draft-2.png") no-repeat center;
+    background: url("/digital-forest/assets/img/header-bg-large.png");
+    background-position: right top;
     height: 300px;
-    background-size: cover;
 }
 
 
@@ -414,7 +414,7 @@ code {
         --pixel-margin-x: 90px;
         --pixel-width: 1000px;
 
-        --footer-font-size: 22px;
+        --footer-font-size: 18px;
 
         --header-font-title-large: 20px;
         --header-font-title-small: 15px;
@@ -459,7 +459,6 @@ code {
     .welcome-container {
         padding-top: 130px;
     }
-
 }
 
 
@@ -469,7 +468,7 @@ code {
         --pixel-margin-x: 30px;
         --pixel-width: 700px;
 
-        --footer-font-size: 22px;
+        --footer-font-size: 18px;
 
         --header-font-title-large: 20px;
         --header-font-title-small: 15px;
@@ -514,7 +513,7 @@ code {
     .welcome-container {
         padding-top: 130px;
     }
-
 }
+
 
 /* Add a media css rule for very small devices (Chrome dev tools -> Galaxy Fold) */
