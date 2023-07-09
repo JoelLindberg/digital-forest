@@ -5,6 +5,8 @@ subtitle: A collection of commands to get going
 date: 2023-05-21 20:45:00 +0200
 thumbnail-img: /assets/img/jekyll-logo-icon.png
 tags: [jekyll, setup, ruby, ubuntu]
+category: development
+published: true
 ---
 
 A compact collection of commands and hints to get going with Jekyll (published on Github Pages), a static site generator built in Ruby. No Ruby programming experience required, you only need to manage the package manager parts.

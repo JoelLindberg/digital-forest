@@ -3,7 +3,9 @@ subtitle: joel@laboratory:~$
 domain: joellindberg.github.io
 url: https://joellindberg.github.io
 baseurl: /digital-forest
+description: "Joel Lindberg's professional playground. Articles about experiments in the digital domain."
 
+permalink: /:categories/:title:output_ext
 paginate: 5
 
 plugins:
