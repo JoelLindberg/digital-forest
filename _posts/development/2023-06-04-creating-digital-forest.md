@@ -203,13 +203,3 @@ Append `?<number>` to your CSS and Javascript links. This seems to not have any 
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles.css?1">
 <script src="{{ site.baseurl }}/assets/js/nav-button-toggle.js?1"></script>
 ~~~
-
-## Search engine optimization - tags and categories
-
-After some light reading it seems that tags and categories can be of help for search engine optimization. This is very low in my priority list, however categories seems to be a nice feature as it can help page navigation in the future when more articles has been added.
-
-
-
-Sources:
-
-* https://jekyllrb.com/docs/posts/#tags-and-categories
