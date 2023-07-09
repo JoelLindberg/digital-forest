@@ -85,9 +85,9 @@
 
 <p>Mobile first is something you generally hear nowadays when talking about responsive websites or webapps. I decided to go for this approach as well as it’s a a large amount of people browse the web using their mobile, plus it makes more sense from an optimization point of view.</p>
 
-<p>Since this is a learning project, but also a tool to serve me, I made the decision early on to create the responsiveness using standard CSS and not a library that abstracts those parts away. I find Tailwind to be an interesting choice for any professional project to speed things up and get higher reliability (considering how incompatible some features are across different browsers).</p>
+<p>Since this is a learning project, but also a tool to serve me, I made the decision early on to create the responsiveness using standard CSS and not a library that abstracts those parts.</p>
 
-<p>I used the built-in developer tools in Firefox and Chrome to identify good thresholds to adapt the site to smaller devices. Since I focused on mobile first, everything on the top in the CSS are styles that apply to any device size as well as specifically for mobile devices. In the bottom I have decided to put the <code>@media</code> CSS at-rules that scales the page for larger devices.</p>
+<p>I used the built-in developer tools in Firefox and Chrome to identify good thresholds to adapt the site to smaller devices. Since I focused on mobile first, everything on the top in the CSS are styles that apply to mobile devices and general styles that apply for all devices. In the bottom I put the <code>@media</code> CSS at-rules that scales the page for larger devices.</p>
 
 <p>Regarding the <code>@media</code> CSS at-rules, I struggled a long time with getting things right with this, which is strange because it looks really simple. The solution turned out to be that you need to specify a few things in the <code>&lt;head&gt;</code> element:</p>
 
@@ -120,9 +120,74 @@ title: date: 2023-06-04 10:00:00 +0200
 
 <h2 id="styling">Styling</h2>
 
-<h3 id="synax-highlighting">Synax highlighting</h3>
+<h3 id="syntax-highlighting">Syntax highlighting</h3>
 
 <p>I decided to use <a href="https://highlightjs.org">highlight.js</a> instead of the built-in Rouge because of higher flexibility since I don’t know Ruby but do know Javascript.</p>
+
+<p>Highlight.js works flawlessly as Jekyll generates the same html tags as highlight.js uses.</p>
+
+<p>The following markdown:</p>
+
+<pre><code class="language-html">~~~html
+&lt;link rel="stylesheet" type="text/css" href="/digital-forest/assets/css/styles.css?1"&gt;
+&lt;script src="/digital-forest/assets/js/nav-button-toggle.js?1"&gt;&lt;/script&gt;
+~~~
+</code></pre>
+
+<p>Generates the following html block:</p>
+
+<pre><code class="language-html">&lt;pre&gt;
+    &lt;code class="language-html hljs language-xml"&gt;
+
+        the above html code in the markdown code block is generated here with more tags for specific parts to be highlighted ...
+        
+    &lt;/code&gt;
+&lt;/pre&gt;
+</code></pre>
+
+<p>Highlight.js uses the above tags and the same generated tags inside of <code>&lt;code&gt;</code> to apply the highlights. We can also use these tags to apply any custom css later.</p>
+
+<p><br /></p>
+
+<p><strong>How I set things up in 3 steps:</strong></p>
+
+<ol>
+  <li>
+    <p>Load the script and a theme of choice in the <code>&lt;head&gt;</code> element (<strong>head.html</strong>):</p>
+
+    <pre><code class="language-html"> &lt;head&gt;
+     &lt;!-- highlighter --&gt;
+     &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"&gt;
+     &lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"&gt;&lt;/script&gt;
+ &lt;/head&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>Initialize the script in the <code>&lt;body&gt;</code> element at the bottom of all content generated (<strong>footer-script.html</strong> in my case):</p>
+
+    <pre><code class="language-html"> &lt;body&gt;
+     &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+ &lt;/body&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>Add custom css styling:</p>
+
+    <pre><code class="language-css"> /* Highlighting */
+
+ code {
+     background-color: #d4d4d4;
+     border-radius: 3px;
+ }
+
+ .hljs {
+     border-radius: 10px;
+ }
+</code></pre>
+  </li>
+</ol>
+
+<p><br /></p>
 
 <h3 id="escape-opening-curly-braces-in-liquid">Escape opening curly braces in Liquid</h3>
 
@@ -130,9 +195,65 @@ title: date: 2023-06-04 10:00:00 +0200
 
 <p>Source: https://joshtronic.com/2020/05/24/how-to-escape-curly-brackets-in-liquid-templates/</p>
 
+<p><br /></p>
+
 <h2 id="navigation">Navigation</h2>
 
+<p>The page was designed to be mobile first, so the first thing I did was to lookup navigation bars that follow the convention of mobile navigation. My approach was the same as with the responsiveness, to develop the navigation from scratch without abstraction.</p>
+
+<p>I implemented my navigation layout at the top part (above @media CSS at-rules) since the mobile version is prioritized.</p>
+
+<ol>
+  <li>
+    <p>Hide and display the navigation bar depending on if we are navigating the page using a mobile device or a desktop device:</p>
+
+    <p>At the top part of the css for the mobile version we display the mobile menu:</p>
+
+    <pre><code class="language-css"> /* display the mobile nav */
+ #nav-button-toggle {
+     display: flex;
+ }
+
+ /* hide the ipad/desktop nav */
+ .menu-items {
+     display: none;
+ }
+</code></pre>
+
+    <p>In each @media CSS at-rule where we don’t want to display the mobile navigation we hide it:</p>
+
+    <pre><code class="language-css"> #nav-button-toggle {
+     display: none;
+ }
+</code></pre>
+  </li>
+  <li>
+    <p>When the mobile navigation bar is displayed we need to hide or display the menu items when clicking the menu button:</p>
+
+    <p>This is the javascript logic I used to toggle the menu items when clicking the menu button:</p>
+
+    <pre><code class="language-javascript"> function myFunction() {
+     var x = document.getElementById("nav-button-links");
+     if (x.style.display === "block") {
+     x.style.display = "none";
+     } else {
+     x.style.display = "block";
+     }
+ }
+</code></pre>
+
+    <p>The mobile menu items are hidden by default:</p>
+
+    <pre><code class="language-css"> #nav-button-links {
+     display: none;
+ }
+</code></pre>
+  </li>
+</ol>
+
 <p>I referenced this w3schools tutorial for creating the mobile navbar: https://www.w3schools.com/howto/howto_js_mobile_navbar.asp</p>
+
+<p><br /></p>
 
 <h2 id="css-and-javascript-caching">CSS and Javascript caching</h2>
 
